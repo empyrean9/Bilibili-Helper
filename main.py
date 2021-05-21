@@ -31,8 +31,12 @@ def Bili_Login() :
         return -2
         break
 
-    cookies = requests.utils.dict_from_cookiejar(response.cookies)
-    return cookies
+    cookie = requests.utils.dict_from_cookiejar(response.cookies)
+    return cookie
     
+def GetInfo(cookie) :
+    res = requests.get("http://api.bilibili.com/x/web-interface/nav",cookies = cookie).json()
+    return res
 
-Bili_Login()
+    
+cookie = Bili_Login()
